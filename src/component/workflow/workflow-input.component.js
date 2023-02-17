@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import workflowService from "../../services/workflow.service"
 import Rulesets from "./rulesets.component"
-
+import { ReactFlowProvider } from 'reactflow';
 const WorkflowInput = () => {
     const initialState = {
         "retailerId": "",
@@ -37,7 +37,9 @@ const WorkflowInput = () => {
             </div>
 
             <div className="row">
+            <ReactFlowProvider>
                 <Rulesets workflow={workflow}/>
+            </ReactFlowProvider>
             </div>
         </div>
     )

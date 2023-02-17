@@ -1,6 +1,25 @@
+import React, { memo } from 'react';
+import { Handle, Position } from 'reactflow';
 
-const RulesetCard = (props) => {
-    console.log(props.obj)
-}
-
-export default RulesetCard;
+export default memo(({ data, isConnectable }) => {
+  return (
+    <>
+      <Handle
+        type="target"
+        position={Position.Left}
+        style={{ background: '#555' }}
+        onConnect={(params) => console.log('handle onConnect', params)}
+        isConnectable={isConnectable}
+      />
+      <div>{data.label}</div>
+      
+      <Handle
+        type="source"
+        position={Position.Right}
+        id="a"
+        style={{  background: '#555' }}
+        isConnectable={isConnectable}
+      />
+    </>
+  );
+});

@@ -23,13 +23,6 @@ class WorkflowService {
         // todo add more events here
     }
     
-    toCardObject(ruleset) {
-        const name = ruleset.name;
-        const rules = ruleset.rules
-        const availableStatuses = ruleset.triggers.map(t => t.status)
-        const linkedRuleset = this.getLinkedRulesets(rules)
-        return { name, rules, availableStatuses, linkedRuleset }
-    }
     getLinkedRulesets(rules) {
         return rules.map(rule => {
             const eventNameKey = this.eventSenders.get(rule.name)
@@ -37,6 +30,7 @@ class WorkflowService {
         })
         .filter(Boolean)
     }
+    
     beautifyWorkflow(workflow) {
         try {
             var ugly = workflow;
